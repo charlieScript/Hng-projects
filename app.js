@@ -1,57 +1,47 @@
-let data = [
-    {principal: 2500, time: 1.8},
-    {principal: 1000, time: 5},
-    {principal: 3000, time: 1},
-    {principal: 2000, time: 3}
-];
+function divisible(number) {
+    //CHECKS IF THE NUMBER IS AN INTEGER
+  if (Number.isInteger(number)) {
+    //initailises the array to be returned
+    let arr = [];
 
-function interestCalculator(data) {
-    let interestData = [];
-    data.forEach(i => {
-        if (i.principal >= 2500 && (i.time > 1 && i.time < 3 )) {
-            let rate = 3;
-            let interest;
-            interest = (i.principal * i.time * rate) / 100;
-            interestData.push({
-                principal: i.principal,
-                time: i.time,
-                rate: rate,
-                interest: interest
-            })
-        } else if (i.principal >= 2500 && i.time < 3) {
-            let rate = 4;
-            let interest;
-            interest = (i.principal * i.time * rate) / 100;
-            interestData.push({
-              principal: i.principal,
-              time: i.time,
-              rate: rate,
-              interest: interest
-            });
-        } else if (i.principal < 2500 && i.time <= 1) {
-            let rate = 2;
-            let interest;
-            interest = (i.principal * i.time * rate) / 100;
-            interestData.push({
-              principal: i.principal,
-              time: i.time,
-              rate: rate,
-              interest: interest
-            });
-        } else {
-            let rate = 1;
-            let interest;
-            interest = (i.principal * i.time * rate) / 100;
-            interestData.push({
-              principal: i.principal,
-              time: i.time,
-              rate: rate,
-              interest: interest
-            });
-        } 
+    // pushes all the values in the array
+    for (let i = 1; i <= number; i++) {
+      arr.push(i);
+      // breaks at the given parameter
+      if (i === number) {
+        break;
+      }
+    }
+
+    // uses a filter method on each of the items
+    arr.filter((i, u) => {
+      if (i % 2 === 0) {
+        arr[u] = "yu";
+      }
+      if (i % 3 === 0) {
+        arr[u] = "gi";
+      }
+      if (i % 5 === 0) {
+        arr[u] = "oh";
+      }
+      if (i % 2 === 0 && i % 3 === 0) {
+        arr[u] = "yu-gi";
+      }
+      if (i % 2 === 0 && i % 5 === 0) {
+        arr[u] = "yu-oh";
+      }
+      if (i % 3 === 0 && i % 5 === 0) {
+        arr[u] = "gi-oh";
+      }
+      if (i % 2 === 0 && i % 3 === 0 && i % 5 === 0) {
+        arr[u] = "yu-gi-oh";
+      }
     });
-    console.log(interestData);
-    return interestData;
+    console.log(arr);
+    return arr;
+  }
+
+  return console.log("INPUT A NUMBER");
 }
 
-interestCalculator(data)
+divisible(100);
